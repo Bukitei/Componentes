@@ -39,10 +39,28 @@
 			<version>2.9.10</version>
 		</dependency>
 		
-		<dependency>
-   			 <groupId>dad.javafx</groupId>
-   			 <artifactId>Componentes</artifactId>
-   			 <version>0.0.1</version>
-		</dependency>
 	</dependencies>
+	
+	<build>
+		<plugins>
+				<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>3.0.0-M1</version>
+				<configuration>
+					<localRepositoryPath>repository</localRepositoryPath>
+					<file>${project.build.directory}/${project.artifactId}-${project.version}.jar</file>
+				</configuration>
+				<executions>
+					<execution>
+						<id>release</id>
+						<phase>install</phase>
+						<goals>
+							<goal>install-file</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
